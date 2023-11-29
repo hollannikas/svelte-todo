@@ -11,15 +11,19 @@
 
     let title = '';
 
-    const addTodo = async() => {
+    const addTodo = () => {
         todos = [...todos, { id: todos.length + 1, title, completed: false }];
         title = '';
+    };
+
+    const deleteTodo = (id: number) => {
+        todos = todos.filter(todo => todo.id !== id);
     };
 </script>
 
 <h1>TODOs</h1>
 {#each todos as todo}
-    <Todo todo={todo} />
+    <Todo {todo} on:delete={() => deleteTodo(todo.id)}/>
 {/each}
 
 <input bind:value={title}/><button on:click={addTodo}>Add</button>
