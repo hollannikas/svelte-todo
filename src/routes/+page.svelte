@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { tick } from 'svelte';
 	import type { ITodo } from '$lib/types';
     import Todo from '$lib/Todo.svelte';
 
@@ -22,9 +21,18 @@
 </script>
 
 <h1>TODOs</h1>
-{#each todos as todo}
-    <Todo {todo} on:delete={() => deleteTodo(todo.id)}/>
-{/each}
+
+<ul>
+    {#each todos as todo}
+        <Todo {todo} on:delete={() => deleteTodo(todo.id)}/>
+    {/each}
+</ul>
 
 <input bind:value={title}/><button on:click={addTodo}>Add</button>
 
+<style>
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+</style>

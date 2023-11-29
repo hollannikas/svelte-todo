@@ -6,11 +6,11 @@
     export let todo: ITodo;
 </script>
 
-<div class:completed={todo.completed}>
+<li>
     <input type="checkbox" bind:checked={todo.completed} />
-    {todo.title}
+    <span class:completed={todo.completed}>{todo.title}</span>
     <button on:click={() => dispatch('delete')}>Delete</button>
-</div>
+</li>
 
 <style>
     .completed {
